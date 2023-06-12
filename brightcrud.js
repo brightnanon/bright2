@@ -7,7 +7,7 @@ const port = 3000;
 
 let dataArray = [];
 
-// Load data from DB.json if it exists
+
 fs.readFile('DB.json', 'utf8', (err, data) => {
   if (err) {
     console.error(err);
