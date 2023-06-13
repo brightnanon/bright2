@@ -36,6 +36,9 @@ app.get('/data', (req, res) => {
 
 app.post('/data', (req, res) => {
   const { title, description } = req.body;
+  if (!title) {
+    return res.status(400).send('Title cannot be empty');
+  }
   const id = uuidv4();
   const newData = {
     id,
@@ -58,6 +61,10 @@ app.post('/data', (req, res) => {
 app.put('/data/:id', (req, res) => {
   const { id } = req.params;
   const { title, description } = req.body;
+
+  if (!title) {
+    return res.status(400).send('Title cannot be empty');
+  }
 
   console.log('Updating data with ID:', id);
   console.log('New data:', title, description);
