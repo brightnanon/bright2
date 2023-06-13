@@ -7,7 +7,15 @@ const port = 3000;
 
 let dataArray = [];
 
+if (!fs.existsSync('DB.json')) {
+  fs.writeFileSync('DB.json', '[]', 'utf8', (err) => {
+    if (err) {
+      console.error(err);
+    }
+  });
+}
 
+// Load data from DB.json
 fs.readFile('DB.json', 'utf8', (err, data) => {
   if (err) {
     console.error(err);
